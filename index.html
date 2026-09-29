@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LINGO!!!!</title>
+<style>
+:root{--blue:#4f8cff;--sky:#76dff2;--purple:#8d7cf6;--pink:#f2a0ca;--yellow:#ffd96b;--mint:#79d9bd;--ink:#17233c;--muted:#6d7890;--bg:#f5f9ff;--card:#fff;--line:#e2eaf6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Tahoma,Arial,sans-serif;color:var(--ink)}
+.app{max-width:480px;margin:auto;min-height:100vh;padding-bottom:90px}
+header{padding:22px 20px 10px;background:linear-gradient(180deg,#edf8ff,#f5f9ff)}
+.brand{font-family:Arial,sans-serif;direction:ltr;text-align:left;font-size:32px;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink));-webkit-background-clip:text;color:transparent}
+.tag{font-family:Arial,sans-serif;direction:ltr;text-align:left;color:var(--muted);font-size:12px}
+main{padding:0 18px}.screen{display:none}.screen.active{display:block}
+h1{font-size:25px;margin:12px 0 18px}h2{font-size:20px}.small{font-size:12px;color:var(--muted)}.title{font-size:19px;font-weight:800}
+.welcome{font-size:22px;font-weight:900;margin:15px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:23px;padding:17px;margin:12px 0;box-shadow:0 8px 24px #5272a30c}
+.progress-card{background:linear-gradient(135deg,#e5f8ff,#f0edff)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.progress{height:10px;background:#dfe8f5;border-radius:99px;overflow:hidden;margin:13px 0}.progress span{display:block;width:60%;height:100%;background:linear-gradient(90deg,var(--sky),var(--blue),var(--purple))}
+button{font-family:inherit;border:0;cursor:pointer;border-radius:14px;padding:12px 15px;font-weight:800;font-size:14px;touch-action:manipulation}
+.primary{background:var(--blue);color:#fff}.secondary{background:#edf4ff;color:#386dcc}.back{background:transparent;color:var(--blue);padding:4px 0;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.tile{min-height:118px;text-align:right;padding:16px;border-radius:20px}.tile b{display:block;font-size:17px;margin:12px 0 4px}.tile span{font-size:11px;color:#58647b}.learn{background:#def8ff}.practice{background:#ece9ff}.quiz{background:#fff3c8}.speak{background:#ffe4f1}
+.icon{font-size:27px}
+.section{font-size:18px;font-weight:900;margin:22px 0 10px}.person{display:flex;align-items:center;gap:14px}.avatar{width:78px;height:78px;border-radius:22px;background:linear-gradient(135deg,#b9edff,#c2b9ff);display:grid;place-items:center;font-size:38px;flex:none}
+.person p{font-size:12px;line-height:1.6;color:var(--muted);margin:5px 0}.chips{display:flex;gap:8px}.chip{background:#eef5ff;color:#486486;border-radius:99px;padding:7px 10px;font-size:12px;font-weight:700}
+.illustration{width:100%;border-radius:20px;background:linear-gradient(135deg,#dff8ff,#eee9ff);display:block}.lesson-box{background:#f7f9fd;border-radius:17px;padding:15px;line-height:1.8}.english{font-family:Arial,sans-serif;direction:ltr;text-align:left;font-size:23px;font-weight:900}
+.option{display:block;width:100%;text-align:right;background:#f6f8fc;border:1px solid var(--line);margin:9px 0}.option.correct{background:#ddf8ed;border-color:var(--mint)}.option.wrong{background:#ffe3e9;border-color:#ee91a7}
+.feedback{min-height:24px;font-weight:800;margin-top:10px}.score{text-align:center;font-size:22px;font-weight:900}.badges{display:grid;grid-template-columns:1fr 1fr;gap:10px}.badge{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px;text-align:center;line-height:1.7}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);display:flex;justify-content:space-around;background:#fff;border-top:1px solid var(--line);padding:8px 4px 11px;z-index:20}.nav button{background:transparent;color:#7b8598;padding:6px 9px}.nav button.active{color:var(--blue)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:78px;background:#17233c;color:#fff;padding:10px 15px;border-radius:99px;font-size:12px;display:none;z-index:30}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand">LINGO!!!!</div><div class="tag">Learn it. Use it. Love it.</div></header>
+<main>
+<section id="home" class="screen active">
+<div class="welcome">مستعد تطوّر لغتك الإنجليزية؟ 🚀</div>
+<div class="card progress-card">
+<div class="row"><div><div class="small">رحلتك في الإنجليزية</div><div class="title">المستوى 1 — مبتدئ</div></div><div style="font-size:28px">🌱</div></div>
+<div class="progress"><span></span></div>
+<div class="row"><span class="small">أنجزت 12 من 20 درسًا</span><button class="primary" onclick="showScreen('learn')">تابع التعلّم</button></div>
+</div>
+<div class="grid">
+<button class="tile learn" onclick="showScreen('learn')"><span class="icon">📚</span><b>تعلّم</b><span>دروس وقواعد</span></button>
+<button class="tile practice" onclick="showScreen('practice')"><span class="icon">✏️</span><b>تدرّب</b><span>طبّق ما تعلمته</span></button>
+<button class="tile quiz" onclick="showScreen('quiz')"><span class="icon">🏆</span><b>اختبر نفسك</b><span>قواعد ومفردات</span></button>
+<button class="tile speak" onclick="showScreen('speak')"><span class="icon">🗣️</span><b>تحدّث</b><span>استخدم الإنجليزية</span></button>
+</div>
+
+<div class="section">⭐ شخصية اليوم</div>
+<div class="card person"><div class="avatar">🎤</div><div><h3 style="margin:0">هاري ستايلز</h3><p>مغنٍ وكاتب أغانٍ وممثل إنجليزي، اشتهر أولًا كعضو في One Direction.</p></div></div>
+
+<div class="card">
+<div class="small">بالإنجليزية</div>
+<p class="english" style="font-size:16px">Harry Styles is an English singer, songwriter and actor.</p>
+<div class="small">بالعربية</div>
+<p style="line-height:1.8">هاري ستايلز مغنٍ وكاتب أغانٍ وممثل إنجليزي.</p>
+<button class="secondary" onclick="say('Harry Styles is an English singer, songwriter and actor.')">🔊 استمع للجملة</button>
+</div>
+</section>
+
+<section id="learn" class="screen">
+<button class="back" onclick="showScreen('home')">← العودة للرئيسية</button>
+<div class="small">الوحدة 1 · أساسيات الإنجليزية</div><h1>التحيات والتعريف بالنفس 👋</h1>
+<svg class="illustration" viewBox="0 0 500 210" aria-label="مشهد تعليمي">
+<rect width="500" height="210" rx="25" fill="#e4f7ff"/><circle cx="100" cy="80" r="45" fill="#ffd5b8"/><circle cx="400" cy="80" r="45" fill="#e8b99b"/>
+<path d="M55 68Q100 15 145 68" fill="#49362f"/><path d="M355 68Q400 15 445 68" fill="#332b28"/>
+<rect x="55" y="126" width="90" height="58" rx="18" fill="#4f8cff"/><rect x="355" y="126" width="90" height="58" rx="18" fill="#8d7cf6"/>
+<path d="M145 115Q250 40 355 115" stroke="#75d8bb" stroke-width="9" fill="none"/><text x="250" y="35" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold" fill="#17233c">Hello! 👋</text>
+</svg>
+<div class="card"><div class="small">كلمة جديدة</div><div class="english">Hello</div><b>مرحبًا</b><div class="lesson-box">نستخدم <b>Hello</b> للتحية. وهي كلمة شائعة ومناسبة في المواقف الرسمية وغير الرسمية.</div><button class="secondary" onclick="say('Hello')">🔊 استمع</button></div>
+<div class="card"><div class="small">عبارة مهمة</div><div class="english" style="font-size:20px">Nice to meet you.</div><b>سعيد بلقائك.</b><div class="lesson-box">نستخدم هذه العبارة عند مقابلة شخص للمرة الأولى.</div><button class="secondary" onclick="say('Nice to meet you.')">🔊 استمع</button></div>
+<button class="primary" style="width:100%" onclick="showScreen('practice')">انتقل إلى التدريب ←</button>
+</section>
+
+<section id="practice" class="screen">
+<button class="back" onclick="showScreen('home')">← العودة</button><h1>تدرّب الآن ✏️</h1>
+<div class="card"><div class="small">اختر الكلمة الصحيحة</div><h2 class="english">My name ___ Adam.</h2>
+<button class="option" onclick="practice(this,true)">is</button><button class="option" onclick="practice(this,false)">are</button><button class="option" onclick="practice(this,false)">am</button><div id="pf" class="feedback"></div></div>
+</section>
+
+<section id="quiz" class="screen">
+<button class="back" onclick="showScreen('home')">← العودة</button><div class="small">اختبار الوحدة 1</div><h1>اختبر نفسك 🧠</h1>
+<div class="card"><div class="title">السؤال <span id="qnum">1</span> من 3</div><p id="question"></p><div id="options"></div><div id="qf" class="feedback"></div></div>
+<div class="card score">النتيجة: <span id="score">0</span></div>
+</section>
+
+<section id="speak" class="screen">
+<button class="back" onclick="showScreen('home')">← العودة</button><h1>المحادثة 🗣️</h1>
+<div class="card"><div class="small">موقف اليوم</div><h2>التعرّف إلى شخص جديد</h2><div class="lesson-box"><p class="english">Hello! What's your name?</p><p>مرحبًا! ما اسمك؟</p><hr><p class="english">My name is Adam. Nice to meet you!</p><p>اسمي آدم. سعيد بلقائك!</p></div><button class="primary" onclick="say('Hello! What is your name? My name is Adam. Nice to meet you!')">🔊 استمع للمحادثة</button></div>
+</section>
+
+<section id="progress" class="screen">
+<button class="back" onclick="showScreen('home')">← العودة</button><h1>تقدّمك 📊</h1>
+<div class="card"><div class="small">مستواك الحالي</div><div class="title">المستوى 1 — مبتدئ</div><div class="progress"><span></span></div><p class="small">12 درسًا مكتملًا</p></div>
+<div class="section">🏅 إنجازاتك</div><div class="badges"><div class="badge">🌱<br><b>أول درس</b></div><div class="badge">🔥<br><b>سلسلة 5 أيام</b></div><div class="badge">📚<br><b>بداية القواعد</b></div><div class="badge">⭐<br><b>مستكشف المفردات</b></div></div>
+</section>
+</main>
+<nav class="nav"><button onclick="showScreen('home')">🏠<br>الرئيسية</button><button onclick="showScreen('learn')">📚<br>تعلّم</button><button onclick="showScreen('quiz')">🏆<br>اختبار</button><button onclick="showScreen('progress')">📊<br>تقدّم</button></nav>
+<div id="toast" class="toast"></div>
+</div>
+<script>
+function showScreen(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function practice(el,ok){document.querySelectorAll('#practice .option').forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');document.getElementById('pf').textContent=ok?'✓ إجابة صحيحة! أحسنت.':'✗ ليست الإجابة الصحيحة. جرّب مرة أخرى.'}
+function say(t){if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='en-GB';speechSynthesis.speak(u);toast('🔊 جارٍ تشغيل النطق بالإنجليزية');}else toast('ميزة الصوت غير متاحة في هذا المتصفح.')}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',1800)}
+const qs=[['اختر التحية الصحيحة:','Hello','Goodbye','Yesterday',0],['My name ___ Adam.','is','are','am',0],['ماذا نقول عند مقابلة شخص للمرة الأولى؟','Nice to meet you.','Good night.','See you yesterday.',0]];
+let qi=0,sc=0;
+function render(){let q=qs[qi];document.getElementById('qnum').textContent=qi+1;document.getElementById('question').textContent=q[0];let box=document.getElementById('options');box.innerHTML='';[q[1],q[2],q[3]].forEach((v,i)=>{let b=document.createElement('button');b.className='option';b.textContent=v;b.onclick=()=>answer(i,b);box.appendChild(b)});document.getElementById('qf').textContent=''}
+function answer(i,b){document.querySelectorAll('#options .option').forEach(x=>x.disabled=true);if(i===qs[qi][4]){sc++;b.classList.add('correct');document.getElementById('qf').textContent='✓ صحيح!'}else{b.classList.add('wrong');document.getElementById('qf').textContent='✗ الإجابة الصحيحة: '+qs[qi][1]}document.getElementById('score').textContent=sc;setTimeout(()=>{if(qi<2){qi++;render()}else{document.getElementById('question').textContent='انتهى الاختبار! 🎉';document.getElementById('options').innerHTML='<button class="primary" style="width:100%" onclick="qi=0;sc=0;document.getElementById(\'score\').textContent=0;render()">إعادة الاختبار</button>';document.getElementById('qf').textContent='حصلت على '+sc+' من 3';}},700)}
+render();
+</script>
+</body>
+</html>
